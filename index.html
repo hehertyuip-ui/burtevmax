@@ -2,8 +2,52 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>КиберЩит — безопасность для учеников</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>КиберЩит — основы кибербезопасности для учеников</title>
+  <meta
+    name="description"
+    content="КиберЩит — учебный сайт по кибербезопасности для учеников: фишинг, надежные пароли, 2FA, чек-лист безопасности и мини-квиз."
+  />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical" href="https://hehertyuip-ui.github.io/burtevmax/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:title" content="КиберЩит — основы кибербезопасности для учеников" />
+  <meta
+    property="og:description"
+    content="Учебный сайт по кибербезопасности: фишинг, пароли, 2FA, чек-лист и мини-квиз."
+  />
+  <meta property="og:url" content="https://hehertyuip-ui.github.io/burtevmax/" />
+  <meta property="og:site_name" content="КиберЩит" />
+  <meta property="og:image" content="https://hehertyuip-ui.github.io/burtevmax/images/glavnaya.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="КиберЩит — основы кибербезопасности для учеников" />
+  <meta
+    name="twitter:description"
+    content="Учебный сайт по кибербезопасности: фишинг, пароли, 2FA, чек-лист и мини-квиз."
+  />
+  <meta name="twitter:image" content="https://hehertyuip-ui.github.io/burtevmax/images/glavnaya.jpg" />
+
+  <!-- Тема браузера -->
+  <meta name="theme-color" content="#0f172a" />
+
+  <!-- Базовая структурированная разметка -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "КиберЩит",
+    "url": "https://hehertyuip-ui.github.io/burtevmax/",
+    "inLanguage": "ru",
+    "description": "Учебный сайт по кибербезопасности для учеников: фишинг, надежные пароли, 2FA, чек-лист безопасности и мини-квиз."
+  }
+  </script>
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -23,7 +67,7 @@
       <button class="hamburger" aria-label="Открыть меню" type="button">☰</button>
 
       <nav class="nav" aria-label="Навигация">
-        <a href="#rules">Правила</a>
+        <a href="#rules">Правила безопасности</a>
         <a href="#phishing">Фишинг</a>
         <a href="#password">Пароли</a>
         <a href="#quiz">Квиз</a>
@@ -40,18 +84,21 @@
     <section class="hero">
       <div class="container hero__grid">
         <div class="hero__content">
-          <h1>Безопасность в интернете — это навык</h1>
+          <h1>Основы безопасности в интернете для учеников</h1>
 
-          <!-- ФОТО: главный экран -->
-          <img src="images/главная.jpg" alt="Кибербезопасность" class="hero__img" />
+          <img
+            src="images/glavnaya.jpg"
+            alt="Иллюстрация по теме кибербезопасности и защиты личных данных в интернете"
+            class="hero__img"
+          />
 
           <p class="lead">
-            Здесь ты быстро узнаешь, как не попасться на фишинг, сделать нормальный пароль
+            Здесь ты быстро узнаешь, как не попасться на фишинг, создать надежный пароль
             и что делать, если аккаунт взломали.
           </p>
           <div class="hero__actions">
-            <a class="btn" href="#quiz">Пройти квиз</a>
-            <a class="btn btn--ghost" href="#checklist">Открыть чек-лист</a>
+            <a class="btn" href="#quiz">Пройти квиз по кибербезопасности</a>
+            <a class="btn btn--ghost" href="#checklist">Открыть чек-лист безопасности</a>
           </div>
 
           <div class="stats" role="list">
@@ -66,42 +113,42 @@
           </div>
         </div>
 
-        <div class="hero__card" aria-label="Что делать при взломе">
-          <h2 class="h3">Если аккаунт взломали</h2>
+        <aside class="hero__card" aria-label="Что делать при взломе аккаунта">
+          <h2 class="h3">Что делать, если аккаунт взломали</h2>
           <ol class="steps">
             <li>Смени пароль и выйди со всех устройств.</li>
-            <li>Включи двухфакторную защиту (2FA).</li>
-            <li>Проверь почту и номер — не меняли ли их.</li>
-            <li>Предупреди друзей: могли писать от твоего имени.</li>
+            <li>Включи двухфакторную аутентификацию (2FA).</li>
+            <li>Проверь почту и номер телефона — не меняли ли их.</li>
+            <li>Предупреди друзей: злоумышленники могли писать от твоего имени.</li>
           </ol>
           <p class="muted">Сохрани себе этот план — он пригодится.</p>
-        </div>
+        </aside>
       </div>
     </section>
 
     <section id="rules" class="section">
       <div class="container">
-        <h2>5 золотых правил</h2>
+        <h2>5 золотых правил кибербезопасности</h2>
         <div class="grid cards">
           <article class="card">
-            <h3>1) Не кликай “в спешке”</h3>
-            <p>Если тебя торопят (“срочно”, “сейчас”, “последний шанс”) — это красный флаг.</p>
+            <h3>1) Не кликай в спешке</h3>
+            <p>Если тебя торопят словами «срочно», «сейчас» или «последний шанс», это может быть признаком мошенничества.</p>
           </article>
           <article class="card">
             <h3>2) Проверяй адрес сайта</h3>
-            <p>Одна лишняя буква в домене — и это уже подделка.</p>
+            <p>Одна лишняя буква в домене может означать, что перед тобой поддельный сайт.</p>
           </article>
           <article class="card">
-            <h3>3) Пароль — длинный</h3>
-            <p>Лучше длинная фраза, чем “qwerty123”. Минимум 12+ символов.</p>
+            <h3>3) Используй длинные пароли</h3>
+            <p>Лучше длинная парольная фраза, чем простой пароль вроде «qwerty123». Желательно от 12 символов.</p>
           </article>
           <article class="card">
             <h3>4) Включай 2FA</h3>
-            <p>Даже если пароль украли, второй шаг защиты спасает аккаунт.</p>
+            <p>Даже если пароль украли, дополнительный шаг защиты помогает сохранить аккаунт.</p>
           </article>
           <article class="card">
-            <h3>5) Не раздавай личное</h3>
-            <p>Код из SMS, пароли, данные карты — никому. Даже “службе поддержки”.</p>
+            <h3>5) Не передавай личные данные</h3>
+            <p>Коды из SMS, пароли и данные карты нельзя сообщать никому, даже если пишут от имени поддержки.</p>
           </article>
         </div>
       </div>
@@ -109,11 +156,14 @@
 
     <section id="phishing" class="section section--alt">
       <div class="container">
-        <h2>Тренажёр: распознай фишинг</h2>
+        <h2>Как распознать фишинг</h2>
         <p class="muted">Выбери вариант, который выглядит безопаснее. Потом увидишь объяснение.</p>
 
-        <!-- ФОТО: фишинг -->
-        <img src="images/фишинг.jpg" alt="Фишинг" class="section__img" />
+        <img
+          src="images/phishing.jpg"
+          alt="Пример фишингового письма и безопасного письма для обучения"
+          class="section__img"
+        />
 
         <div class="phish">
           <div class="phish__mail" id="mailA" tabindex="0" role="button" aria-label="Письмо А">
@@ -133,7 +183,7 @@
               <span class="from">От: no-reply@paypal.com</span>
             </div>
             <div class="phish__body">
-              Для входа в аккаунт используйте официальный сайт вручную (не по ссылке из письма).
+              Для входа в аккаунт используйте официальный сайт вручную, а не ссылку из письма.
               Если это были не вы — смените пароль в настройках.
             </div>
           </div>
@@ -147,18 +197,21 @@
 
     <section id="password" class="section">
       <div class="container">
-        <h2>Проверка пароля (учебная)</h2>
+        <h2>Проверка силы пароля</h2>
         <p class="muted">
-          Не вводи сюда настоящий пароль от аккаунтов — придумай пример.
+          Не вводи сюда настоящий пароль от аккаунтов — придумай учебный пример.
         </p>
 
-        <!-- ФОТО: пароль -->
-        <img src="images/пароль.jpg" alt="Хранение паролей" class="section__img" />
+        <img
+          src="images/parol.jpg"
+          alt="Иллюстрация надежного хранения паролей и защиты аккаунтов"
+          class="section__img"
+        />
 
         <div class="panel">
           <label class="label" for="pwd">Введите пример пароля</label>
           <div class="row">
-            <input id="pwd" class="input" type="password" placeholder="Напр: kotik-2026-super!" />
+            <input id="pwd" class="input" type="password" placeholder="Например: kotik-2026-super!" />
             <button class="btn btn--ghost" id="togglePwd" type="button">Показать</button>
           </div>
 
@@ -175,7 +228,7 @@
 
     <section id="quiz" class="section section--alt">
       <div class="container">
-        <h2>Мини-квиз</h2>
+        <h2>Мини-квиз по кибербезопасности</h2>
         <div class="quiz panel">
           <div class="row row--between">
             <div class="pill" id="qProgress">Вопрос 1/5</div>
@@ -197,7 +250,7 @@
 
     <section id="checklist" class="section">
       <div class="container">
-        <h2>Чек-лист безопасности</h2>
+        <h2>Чек-лист цифровой безопасности</h2>
         <p class="muted">Отмечай выполненное — прогресс сохранится в браузере.</p>
 
         <div class="panel">
@@ -208,11 +261,11 @@
 
           <ul class="checklist" id="clList">
             <li><label><input type="checkbox" data-id="1"> Включил(а) 2FA в основных аккаунтах</label></li>
-            <li><label><input type="checkbox" data-id="2"> Пароли длинные и разные для разных сервисов</label></li>
-            <li><label><input type="checkbox" data-id="3"> Не отправляю коды из SMS/почты никому</label></li>
+            <li><label><input type="checkbox" data-id="2"> Использую длинные и разные пароли для разных сервисов</label></li>
+            <li><label><input type="checkbox" data-id="3"> Не отправляю коды из SMS и почты никому</label></li>
             <li><label><input type="checkbox" data-id="4"> Проверяю домен сайта перед входом</label></li>
-            <li><label><input type="checkbox" data-id="5"> Не качаю файлы из сомнительных источников</label></li>
-            <li><label><input type="checkbox" data-id="6"> У меня есть план действий при взломе</label></li>
+            <li><label><input type="checkbox" data-id="5"> Не скачиваю файлы из сомнительных источников</label></li>
+            <li><label><input type="checkbox" data-id="6"> У меня есть план действий при взломе аккаунта</label></li>
           </ul>
         </div>
       </div>
@@ -220,8 +273,8 @@
 
     <footer class="footer">
       <div class="container footer__inner">
-        <p>© <span id="year"></span> КиберЩит. Учебный проект.</p>
-        <p class="muted">Совет: если сомневаешься — лучше переспроси взрослого/преподавателя и не спеши.</p>
+        <p>© <span id="year"></span> КиберЩит. Учебный проект по кибербезопасности.</p>
+        <p class="muted">Если сомневаешься — лучше переспроси взрослого или преподавателя и не спеши.</p>
       </div>
     </footer>
   </main>
