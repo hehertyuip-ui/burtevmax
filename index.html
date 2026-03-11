@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>КиберЩит — безопасность для учеников</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <a class="skip" href="#main">Перейти к содержанию</a>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <div class="brand">
+        <span class="brand__badge" aria-hidden="true">🛡️</span>
+        <div class="brand__text">
+          <div class="brand__title">КиберЩит</div>
+          <div class="brand__subtitle">коротко, понятно, по делу</div>
+        </div>
+      </div>
+
+      <button class="hamburger" aria-label="Открыть меню" type="button">☰</button>
+
+      <nav class="nav" aria-label="Навигация">
+        <a href="#rules">Правила</a>
+        <a href="#phishing">Фишинг</a>
+        <a href="#password">Пароли</a>
+        <a href="#quiz">Квиз</a>
+        <a href="#checklist">Чек-лист</a>
+      </nav>
+
+      <button class="btn btn--ghost" id="themeBtn" type="button" aria-label="Переключить тему">
+        🌙
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <h1>Безопасность в интернете — это навык</h1>
+
+          <!-- ФОТО: главный экран -->
+          <img src="images/главная.jpg" alt="Кибербезопасность" class="hero__img" />
+
+          <p class="lead">
+            Здесь ты быстро узнаешь, как не попасться на фишинг, сделать нормальный пароль
+            и что делать, если аккаунт взломали.
+          </p>
+          <div class="hero__actions">
+            <a class="btn" href="#quiz">Пройти квиз</a>
+            <a class="btn btn--ghost" href="#checklist">Открыть чек-лист</a>
+          </div>
+
+          <div class="stats" role="list">
+            <div class="stat" role="listitem">
+              <div class="stat__num" id="scoreSaved">0</div>
+              <div class="stat__label">Лучший результат</div>
+            </div>
+            <div class="stat" role="listitem">
+              <div class="stat__num" id="checkSaved">0%</div>
+              <div class="stat__label">Прогресс чек-листа</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__card" aria-label="Что делать при взломе">
+          <h2 class="h3">Если аккаунт взломали</h2>
+          <ol class="steps">
+            <li>Смени пароль и выйди со всех устройств.</li>
+            <li>Включи двухфакторную защиту (2FA).</li>
+            <li>Проверь почту и номер — не меняли ли их.</li>
+            <li>Предупреди друзей: могли писать от твоего имени.</li>
+          </ol>
+          <p class="muted">Сохрани себе этот план — он пригодится.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="rules" class="section">
+      <div class="container">
+        <h2>5 золотых правил</h2>
+        <div class="grid cards">
+          <article class="card">
+            <h3>1) Не кликай “в спешке”</h3>
+            <p>Если тебя торопят (“срочно”, “сейчас”, “последний шанс”) — это красный флаг.</p>
+          </article>
+          <article class="card">
+            <h3>2) Проверяй адрес сайта</h3>
+            <p>Одна лишняя буква в домене — и это уже подделка.</p>
+          </article>
+          <article class="card">
+            <h3>3) Пароль — длинный</h3>
+            <p>Лучше длинная фраза, чем “qwerty123”. Минимум 12+ символов.</p>
+          </article>
+          <article class="card">
+            <h3>4) Включай 2FA</h3>
+            <p>Даже если пароль украли, второй шаг защиты спасает аккаунт.</p>
+          </article>
+          <article class="card">
+            <h3>5) Не раздавай личное</h3>
+            <p>Код из SMS, пароли, данные карты — никому. Даже “службе поддержки”.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="phishing" class="section section--alt">
+      <div class="container">
+        <h2>Тренажёр: распознай фишинг</h2>
+        <p class="muted">Выбери вариант, который выглядит безопаснее. Потом увидишь объяснение.</p>
+
+        <!-- ФОТО: фишинг -->
+        <img src="images/фишинг.jpg" alt="Фишинг" class="section__img" />
+
+        <div class="phish">
+          <div class="phish__mail" id="mailA" tabindex="0" role="button" aria-label="Письмо А">
+            <div class="phish__head">
+              <span class="tag">Письмо A</span>
+              <span class="from">От: security@paypaI.com</span>
+            </div>
+            <div class="phish__body">
+              Мы обнаружили подозрительную активность. Срочно подтвердите аккаунт по ссылке:
+              <span class="linklike">https://paypaI.com/verify</span>
+            </div>
+          </div>
+
+          <div class="phish__mail" id="mailB" tabindex="0" role="button" aria-label="Письмо Б">
+            <div class="phish__head">
+              <span class="tag tag--good">Письмо B</span>
+              <span class="from">От: no-reply@paypal.com</span>
+            </div>
+            <div class="phish__body">
+              Для входа в аккаунт используйте официальный сайт вручную (не по ссылке из письма).
+              Если это были не вы — смените пароль в настройках.
+            </div>
+          </div>
+        </div>
+
+        <div class="notice" id="phishResult" aria-live="polite">
+          Нажми на письмо A или B.
+        </div>
+      </div>
+    </section>
+
+    <section id="password" class="section">
+      <div class="container">
+        <h2>Проверка пароля (учебная)</h2>
+        <p class="muted">
+          Не вводи сюда настоящий пароль от аккаунтов — придумай пример.
+        </p>
+
+        <!-- ФОТО: пароль -->
+        <img src="images/пароль.jpg" alt="Хранение паролей" class="section__img" />
+
+        <div class="panel">
+          <label class="label" for="pwd">Введите пример пароля</label>
+          <div class="row">
+            <input id="pwd" class="input" type="password" placeholder="Напр: kotik-2026-super!" />
+            <button class="btn btn--ghost" id="togglePwd" type="button">Показать</button>
+          </div>
+
+          <div class="meter" aria-label="Сила пароля">
+            <div class="meter__bar" id="meterBar"></div>
+          </div>
+          <div class="row row--between">
+            <div class="pill" id="pwdLevel">—</div>
+            <div class="muted" id="pwdHint">Добавь длину, разные символы и уникальность.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quiz" class="section section--alt">
+      <div class="container">
+        <h2>Мини-квиз</h2>
+        <div class="quiz panel">
+          <div class="row row--between">
+            <div class="pill" id="qProgress">Вопрос 1/5</div>
+            <div class="pill pill--ok" id="qScore">0 баллов</div>
+          </div>
+
+          <h3 class="quiz__q" id="qText">—</h3>
+          <div class="quiz__answers" id="qAnswers"></div>
+
+          <div class="notice" id="qNotice" aria-live="polite"></div>
+
+          <div class="row row--between">
+            <button class="btn btn--ghost" id="qRestart" type="button">Начать заново</button>
+            <button class="btn" id="qNext" type="button" disabled>Дальше</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="checklist" class="section">
+      <div class="container">
+        <h2>Чек-лист безопасности</h2>
+        <p class="muted">Отмечай выполненное — прогресс сохранится в браузере.</p>
+
+        <div class="panel">
+          <div class="row row--between">
+            <div class="pill" id="clProgress">0/6</div>
+            <button class="btn btn--ghost" id="clReset" type="button">Сбросить</button>
+          </div>
+
+          <ul class="checklist" id="clList">
+            <li><label><input type="checkbox" data-id="1"> Включил(а) 2FA в основных аккаунтах</label></li>
+            <li><label><input type="checkbox" data-id="2"> Пароли длинные и разные для разных сервисов</label></li>
+            <li><label><input type="checkbox" data-id="3"> Не отправляю коды из SMS/почты никому</label></li>
+            <li><label><input type="checkbox" data-id="4"> Проверяю домен сайта перед входом</label></li>
+            <li><label><input type="checkbox" data-id="5"> Не качаю файлы из сомнительных источников</label></li>
+            <li><label><input type="checkbox" data-id="6"> У меня есть план действий при взломе</label></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>© <span id="year"></span> КиберЩит. Учебный проект.</p>
+        <p class="muted">Совет: если сомневаешься — лучше переспроси взрослого/преподавателя и не спеши.</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
