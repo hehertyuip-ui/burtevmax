@@ -12,7 +12,6 @@
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href="https://hehertyuip-ui.github.io/burtevmax/" />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ru_RU" />
   <meta property="og:title" content="КиберЩит — основы кибербезопасности для учеников" />
@@ -24,7 +23,6 @@
   <meta property="og:site_name" content="КиберЩит" />
   <meta property="og:image" content="https://hehertyuip-ui.github.io/burtevmax/главная.jpg" />
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="КиберЩит — основы кибербезопасности для учеников" />
   <meta
@@ -33,10 +31,8 @@
   />
   <meta name="twitter:image" content="https://hehertyuip-ui.github.io/burtevmax/главная.jpg" />
 
-  <!-- Тема браузера -->
   <meta name="theme-color" content="#0f172a" />
 
-  <!-- Базовая структурированная разметка -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -73,6 +69,9 @@
         <a href="#quiz">Квиз</a>
         <a href="#checklist">Чек-лист</a>
       </nav>
+
+      <button class="register-btn" type="button" id="supportBtn">Поддержать</button>
+      <button class="register-btn" type="button">Регистрация</button>
 
       <button class="btn btn--ghost" id="themeBtn" type="button" aria-label="Переключить тему">
         🌙
@@ -270,6 +269,75 @@
         </div>
       </div>
     </section>
+
+    <section class="feedback-section" id="feedback">
+      <div class="container">
+        <h2 class="feedback-section__title">Оставить мнение о сайте</h2>
+        <p class="feedback-section__subtitle">Расскажи нам, что ты думаешь о КиберЩите и что можно улучшить</p>
+
+        <form class="feedback-form" method="post">
+          <div class="form-group">
+            <label class="form-group__label" for="feedback-name">Твоё имя <span class="form-group__required">*</span></label>
+            <input type="text" id="feedback-name" name="name" placeholder="Как тебя зовут?" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-group__label" for="feedback-email">Email <span class="form-group__required">*</span></label>
+            <input type="email" id="feedback-email" name="email" placeholder="твой@email.com" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-group__label" for="feedback-message">Твоё мнение <span class="form-group__required">*</span></label>
+            <textarea id="feedback-message" name="message" placeholder="Напиши, что тебе понравилось или что можно улучшить..."></textarea>
+          </div>
+
+          <div class="checkbox-group">
+            <label class="checkbox-item">
+              <input type="checkbox" name="agree" />
+              <span class="checkbox-label">Я согласен(на) с обработкой мой данных</span>
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button class="register-btn" type="submit">Отправить отзыв</button>
+            <button class="btn btn--ghost" type="reset">Очистить</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+
+
+    <section class="payment-section" id="support">
+      <div class="container">
+        <div class="panel">
+          <h2>Поддержите проект</h2>
+          <p class="muted">Нажмите кнопку ниже, чтобы поддержать проект и отправить выбранную сумму.</p>
+          <div class="form-actions" style="margin-top: 24px;">
+            <button class="btn" id="donateBtn" type="button">Отправить деньги</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    </section>
+
+    <div class="modal" id="donateModal" aria-hidden="true">
+      <div class="modal__overlay"></div>
+      <div class="modal__content panel">
+        <button class="modal__close" aria-label="Закрыть" type="button">&times;</button>
+        <h2>Выберите сумму</h2>
+        <div class="payment-options" id="modalOptions">
+          <button class="payment-option" data-amount="5" type="button">5€</button>
+          <button class="payment-option" data-amount="10" type="button">10€</button>
+          <button class="payment-option" data-amount="15" type="button">15€</button>
+        </div>
+        <div class="form-actions" style="margin-top: 24px;">
+          <button class="pay-btn" id="modalSendBtn" type="button">Отправить</button>
+        </div>
+      </div>
+    </div>
 
     <footer class="footer">
       <div class="container footer__inner">
