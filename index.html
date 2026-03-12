@@ -70,8 +70,14 @@
         <a href="#checklist">Чек-лист</a>
       </nav>
 
-      <button class="register-btn" type="button" id="supportBtn">Поддержать</button>
-      <button class="register-btn" type="button">Регистрация</button>
+      <button class="register-visual" id="registerBtn" type="button" aria-label="Открыть форму регистрации">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" class="register-icon-svg">
+          <circle cx="32" cy="20" r="10" fill="currentColor"/>
+          <path d="M 16 38 Q 16 30 32 30 Q 48 30 48 38 L 48 50 Q 48 54 44 54 L 20 54 Q 16 54 16 50 Z" fill="currentColor"/>
+        </svg>
+      </button>
+
+      <button class="donate-icon" id="donateBtn" type="button" aria-label="Поддержать проект денежной помощью">💝</button>
 
       <button class="btn btn--ghost" id="themeBtn" type="button" aria-label="Переключить тему">
         🌙
@@ -346,6 +352,97 @@
       </div>
     </footer>
   </main>
+
+  <div class="modal" id="registerModal" aria-hidden="true" role="dialog" aria-labelledby="registerModalTitle">
+    <div class="modal__overlay"></div>
+    <div class="modal__content">
+      <button class="modal__close" id="closeRegister" aria-label="Закрыть окно регистрации">✕</button>
+      
+      <h2 class="modal__title" id="registerModalTitle">Регистрация</h2>
+      <div id="registerMessage" class="register-message" aria-live="polite" aria-atomic="true"></div>
+      
+      <form class="registration-form" id="registerForm" novalidate>
+        <fieldset>
+          <legend class="sr-only">Данные для регистрации</legend>
+          
+          <div class="form-group">
+            <label for="register-username" class="form-label">Имя пользователя</label>
+            <input 
+              type="text" 
+              id="register-username" 
+              name="username" 
+              class="form-input"
+              placeholder="Введи своё имя"
+              minlength="3"
+              maxlength="30"
+              required 
+              aria-required="true"
+              aria-describedby="username-error"
+            />
+            <span id="username-error" class="form-error" role="alert"></span>
+          </div>
+          
+          <div class="form-group">
+            <label for="register-email" class="form-label">Email</label>
+            <input 
+              type="email" 
+              id="register-email" 
+              name="email" 
+              class="form-input"
+              placeholder="твой@email.com"
+              required 
+              aria-required="true"
+              aria-describedby="email-error"
+            />
+            <span id="email-error" class="form-error" role="alert"></span>
+          </div>
+          
+          <div class="form-group">
+            <label for="register-password" class="form-label">Пароль</label>
+            <input 
+              type="password" 
+              id="register-password" 
+              name="password" 
+              class="form-input"
+              placeholder="Минимум 8 символов"
+              minlength="8"
+              maxlength="100"
+              required 
+              aria-required="true"
+              aria-describedby="password-error"
+            />
+            <span id="password-error" class="form-error" role="alert"></span>
+          </div>
+          
+          <div class="form-group">
+            <label for="register-confirm" class="form-label">Подтверди пароль</label>
+            <input 
+              type="password" 
+              id="register-confirm" 
+              name="confirm" 
+              class="form-input"
+              placeholder="Повтори пароль"
+              minlength="8"
+              maxlength="100"
+              required 
+              aria-required="true"
+              aria-describedby="confirm-error"
+            />
+            <span id="confirm-error" class="form-error" role="alert"></span>
+          </div>
+        </fieldset>
+        
+        <div class="form-actions">
+          <button type="submit" class="btn btn--primary" id="registerSubmit">Зарегистрироваться</button>
+          <button type="button" class="btn btn--secondary" id="cancelRegister">Отмена</button>
+        </div>
+      </form>
+      
+      <p class="modal__footer">
+        Уже есть аккаунт? <button type="button" class="link-button" id="switchToLogin">Войдите</button>
+      </p>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

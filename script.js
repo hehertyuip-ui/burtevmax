@@ -42,6 +42,187 @@ hamburger.addEventListener('click', () => {
   nav.classList.toggle('nav--open');
 });
 
+const donateBtn = $('#donateBtn');
+
+donateBtn.addEventListener('click', () => {
+  const donateSection = document.getElementById('support');
+  if (donateSection) {
+    donateSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+});
+
+const registerBtn = $('#registerBtn');
+const registerModal = $('#registerModal');
+const closeRegister = $('#closeRegister');
+const cancelRegister = $('#cancelRegister');
+const registerForm = $('#registerForm');
+const registerMessage = $('#registerMessage');
+
+function openRegisterModal() {
+  registerModal.setAttribute('aria-hidden', 'false');
+  registerModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.documentElement.style.overflow = 'hidden';
+  registerForm.reset();
+  clearRegisterMessage();
+}
+
+function closeRegisterModal() {
+  registerModal.setAttribute('aria-hidden', 'true');
+  registerModal.classList.remove('open');
+  document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
+  registerForm.reset();
+  clearRegisterMessage();
+}
+
+function clearRegisterMessage() {
+  registerMessage.textContent = '';
+  registerMessage.className = 'register-message';
+}
+
+function showErrorMessage(text) {
+  registerMessage.textContent = '❌ ' + text;
+  registerMessage.className = 'register-message error';
+}
+
+function showSuccessMessage(text) {
+  registerMessage.textContent = '✅ ' + text;
+  registerMessage.className = 'register-message success';
+}
+
+function validateEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+function validateUsername(username) {
+  return username.length >= 3 && /^[a-zA-Z0-9_-]+$/.test(username);
+}
+
+function getFieldValue(fieldId) {
+  return $(fieldId).value.trim();
+}
+
+function showFieldError(fieldId, errorText) {
+  const field = $(fieldId);
+  const errorElement = document.getElementById(fieldId.substring(1) + '-error');
+  if (errorElement) {
+    errorElement.textContent = errorText;
+  }
+}
+
+function clearFieldErrors() {
+  ['#register-username', '#register-email', '#register-password', '#register-confirm'].forEach(fieldId => {
+    $(fieldId).classList.remove('error');
+    const errorId = fieldId.substring(1) + '-error';
+    const errorElement = document.getElementById(errorId);
+    if (errorElement) {
+      errorElement.textContent = '';
+    }
+  });
+}
+
+registerForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  clearFieldErrors();
+  clearRegisterMessage();
+
+  const username = getFieldValue('#register-username');
+  const email = getFieldValue('#register-email');
+  const password = getFieldValue('#register-password');
+  const confirmPassword = getFieldValue('#register-confirm');
+
+  let hasError = false;
+
+  if (!username) {
+    showFieldError('register-username', 'Введи имя пользователя');
+    hasError = true;
+  } else if (!validateUsername(username)) {
+    showFieldError('register-username', 'От 3 символов, только буквы, цифры, тире и подчеркивание');
+    hasError = true;
+  }
+
+  if (!email) {
+    showFieldError('register-email', 'Введи email');
+    hasError = true;
+  } else if (!validateEmail(email)) {
+    showFieldError('register-email', 'Некорректный email адрес');
+    hasError = true;
+  }
+
+  if (!password) {
+    showFieldError('register-password', 'Введи пароль');
+    hasError = true;
+  } else if (password.length < 8) {
+    showFieldError('register-password', 'Минимум 8 символов');
+    hasError = true;
+  }
+
+  if (!confirmPassword) {
+    showFieldError('register-confirm', 'Подтверди пароль');
+    hasError = true;
+  } else if (password !== confirmPassword) {
+    showFieldError('register-confirm', 'Пароли не совпадают');
+    hasError = true;
+  }
+
+  if (hasError) {
+    showErrorMessage('Проверь форму');
+    return;
+  }
+
+  const users = load('users', []);
+  const userExists = users.some(u => u.email === email || u.username === username);
+
+  if (userExists) {
+    showErrorMessage('Этот email или имя уже зарегистрировано');
+    return;
+  }
+
+  const newUser = {
+    id: Date.now(),
+    username,
+    email,
+    password,
+    createdAt: new Date().toISOString()
+  };
+
+  users.push(newUser);
+  save('users', users);
+  save('currentUser', newUser);
+
+  showSuccessMessage('Регистрация успешна! Добро пожаловать!');
+
+  setTimeout(() => {
+    closeRegisterModal();
+    registerBtn.textContent = '✓';
+    registerBtn.setAttribute('aria-label', 'Вы вошли в систему');
+  }, 1500);
+});
+
+registerBtn.addEventListener('click', openRegisterModal);
+closeRegister.addEventListener('click', closeRegisterModal);
+cancelRegister.addEventListener('click', closeRegisterModal);
+
+registerModal.addEventListener('click', (e) => {
+  if (e.target === registerModal || e.target.classList.contains('modal__overlay')) {
+    closeRegisterModal();
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && registerModal.getAttribute('aria-hidden') === 'false') {
+    closeRegisterModal();
+  }
+});
+
+const currentUser = load('currentUser', null);
+if (currentUser) {
+  registerBtn.textContent = '✓';
+  registerBtn.setAttribute('aria-label', `Вы вошли как ${currentUser.username}`);
+}
+
 $("#year").textContent = String(new Date().getFullYear());
 
 const bestScore = load("bestQuizScore", 0);
@@ -311,16 +492,6 @@ clReset.addEventListener("click", () => {
 
 renderChecklist();
 
-const registerBtn = $(".register-btn");
-if (registerBtn) {
-  registerBtn.addEventListener("click", () => {
-    const feedbackSection = $(".feedback-section");
-    if (feedbackSection) {
-      feedbackSection.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  });
-}
-
 const feedbackForm = $(".feedback-form");
 if (feedbackForm) {
   const submitBtn = feedbackForm.querySelector("button[type='submit']");
@@ -516,7 +687,6 @@ if (paymentOptions) {
   }
 }
 
-const donateBtn = $("#donateBtn");
 const modal = $("#donateModal");
 if (donateBtn && modal) {
   const overlay = modal.querySelector(".modal__overlay");
@@ -527,12 +697,16 @@ if (donateBtn && modal) {
   function openModal() {
     modal.setAttribute("aria-hidden", "false");
     modal.classList.add("open");
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
     modalOptions.forEach(o => o.classList.remove("active"));
     modalSelected = null;
   }
   function closeModal() {
     modal.setAttribute("aria-hidden", "true");
     modal.classList.remove("open");
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
   }
 
   donateBtn.addEventListener("click", openModal);
